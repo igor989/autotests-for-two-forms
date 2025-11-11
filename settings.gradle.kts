@@ -1,0 +1,1 @@
+rootProject.name = "protei_qa_test_webpage"
