@@ -367,4 +367,20 @@ public class ProfileFormTest {
 
         Assert.assertEquals(profilePage.getAllRows().size(), 3, "Должно быть добавлено 3 записи");
     }
+
+    @Test(description = "Добавление большого количества записей подряд")
+    public void testMultipleSubmissions16() {
+        for (int i = 0; i < 16; i++) {
+            profilePage
+                    .setEmail("user" + i + "@protei.ru")
+                    .setName(ProfileFormConstants.NAME + i)
+                    .selectGender(ProfileFormConstants.GENDER)
+                    .checkOption11(ProfileFormConstants.OPTION1_1)
+                    .selectOption2(ProfileFormConstants.OPTION2)
+                    .submitForm()
+                    .clickAlertButton();
+        }
+
+        Assert.assertEquals(profilePage.getAllRows().size(), 16, "Должно быть добавлено 16 записи");
+    }
 }
